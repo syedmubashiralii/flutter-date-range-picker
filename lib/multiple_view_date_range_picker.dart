@@ -33,6 +33,7 @@ class MultipleViewDateRangePicker extends StatefulWidget {
   final TextEditingController? endDateInputController;
   final DateTime? startDate;
   final DateTime? endDate;
+  final VoidCallback? onClose;
   final List<Widget>? customDateRangeButtons;
   final double? radius;
   final double? tabletInputFieldMaxWidth;
@@ -47,6 +48,7 @@ class MultipleViewDateRangePicker extends StatefulWidget {
     this.last7daysTitle,
     this.last30daysTitle,
     this.last6monthsTitle,
+    this.onClose,
     this.lastYearTitle,
     this.startDate,
     this.endDate,
@@ -132,12 +134,12 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
-      mobile: _buildViewMobile(context),
-      tablet: _buildViewTablet(context)
+      mobile: _buildViewMobile(context,widget.onClose??(){}),
+      tablet: _buildViewTablet(context,widget.onClose??(){})
     );
   }
 
-  Widget _buildViewTablet(BuildContext context) {
+  Widget _buildViewTablet(BuildContext context,VoidCallback onClose ) {
     return Center(
       child: Container(
         height: 500 ,
@@ -226,13 +228,13 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
             ]),
           ),
           const Divider(color: ColorsUtils.colorDivider, height: 1),
-           _buildBottomViewTablet(context),
+           _buildBottomViewTablet(context, onClose),
         ]),
       ),
     );
   }
 
-  Widget _buildViewMobile(BuildContext context) {
+  Widget _buildViewMobile(BuildContext context,VoidCallback onClose) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(8),
@@ -268,7 +270,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
               _buildTopView(context),
               _buildDateInputFormMobile(context, DateType.start),
               _buildDateInputFormMobile(context, DateType.end),
-              _buildBottomViewMobile(context)
+              _buildBottomViewMobile(context,onClose)
             ]
           ),
         ),
@@ -407,7 +409,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
     );
   }
 
-  Widget _buildBottomViewMobile(BuildContext context) {
+  Widget _buildBottomViewMobile(BuildContext context, VoidCallback? onClose) {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Row(children: [
@@ -421,7 +423,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
               fontSize: 16
             ),
             backgroundColor: ColorsUtils.colorButtonDisable,
-            onTap: Navigator.maybeOf(context)?.maybePop,
+            onTap: onClose?? Navigator.maybeOf(context)?.maybePop,
           ),
         ),
         const SizedBox(width: 8),
@@ -441,7 +443,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
     );
   }
 
-  Widget _buildBottomViewTablet(BuildContext context) {
+  Widget _buildBottomViewTablet(BuildContext context,VoidCallback onClose){
     if (!ResponsiveUtils.isDesktop(context)) {
       return Padding(
         padding: const EdgeInsets.only(top: 16, bottom: 8, left: 8, right: 8),
@@ -460,7 +462,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
               _buildDateInputFormTablet(context, DateType.end),
             ]),
             const SizedBox(height: 8),
-            _buildBottomViewMobile(context)
+            _buildBottomViewMobile(context,onClose)
           ],
         ),
       );
