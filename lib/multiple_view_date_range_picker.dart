@@ -472,7 +472,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
         child: Row(children: [
           _startAndEndDateInputFormTablet(context),
           const Spacer(),
-          _bottomViewTabletConfirmationButtons(context),
+          _bottomViewTabletConfirmationButtons(context,onClose),
         ]),
       );
     } else {
@@ -482,7 +482,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
           children: [
             _startAndEndDateInputFormTablet(context),
             const SizedBox(height: 12),
-            _bottomViewTabletConfirmationButtons(context),
+            _bottomViewTabletConfirmationButtons(context,onClose),
           ],
         ),
       );
@@ -539,7 +539,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
     );
   }
 
-  Widget _bottomViewTabletConfirmationButtons(BuildContext context) {
+  Widget _bottomViewTabletConfirmationButtons(BuildContext context, VoidCallback onClose) {
     return Row(
       key: _bottomViewTabletConfirmationButtonsKey,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -553,7 +553,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
           ),
           padding: const EdgeInsets.symmetric(horizontal: 25),
           backgroundColor: ColorsUtils.colorButtonDisable,
-          onTap: Navigator.maybeOf(context)?.maybePop,
+          onTap:onClose?? Navigator.maybeOf(context)?.maybePop,
         ),
         const SizedBox(width: 12),
         Flexible(
