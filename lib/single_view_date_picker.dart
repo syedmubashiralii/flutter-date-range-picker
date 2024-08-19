@@ -13,6 +13,7 @@ class SingleViewDatePicker extends StatelessWidget {
   final String? title;
   final SelectDateActionCallback? selectDateActionCallback;
   final DateRangePickerController? datePickerController;
+  final VoidCallback? onClose;
   final DateTime? currentDate;
   final double? radius;
   final bool autoClose;
@@ -23,6 +24,7 @@ class SingleViewDatePicker extends StatelessWidget {
     this.currentDate,
     this.selectDateActionCallback,
     this.datePickerController,
+    this.onClose,
     this.radius,
     this.autoClose = true
   }) : super(key: key);
@@ -81,7 +83,7 @@ class SingleViewDatePicker extends StatelessWidget {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    onTap: Navigator.maybeOf(context)?.maybePop,
+                    onTap: onClose??  Navigator.maybeOf(context)?.maybePop,
                     customBorder: const CircleBorder(),
                     child: Padding(
                       padding: const EdgeInsets.all(5),
