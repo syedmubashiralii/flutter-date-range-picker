@@ -16,7 +16,7 @@ dependencies:
 
   syncfusion_flutter_datepicker: ^23.1.44
 
-  pattern_formatter: 3.0.0
+  pattern_formatter: 4.0.0
 
   flutter_svg: ^2.0.9
 
