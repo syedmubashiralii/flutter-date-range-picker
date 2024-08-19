@@ -14,7 +14,7 @@ dependencies:
 
   intl: ^0.19.0
 
-  syncfusion_flutter_datepicker: ^23.1.44
+  syncfusion_flutter_datepicker: ^26.2.9
 
   pattern_formatter: 4.0.0
 
