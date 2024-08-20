@@ -549,11 +549,15 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
       mainAxisSize: MainAxisSize.min,
       children: [
         _buildDateInputFormTablet(context, DateType.start),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: SvgPicture.asset(
-            ImagePaths.icDateRange,
-            package: ImagePaths.packageName,
+       
+           Visibility(
+          visible: widget.fromSingle==false||widget.fromSingle==null,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: SvgPicture.asset(
+              ImagePaths.icDateRange,
+              package: ImagePaths.packageName,
+            ),
           ),
         ),
         Visibility(
@@ -607,6 +611,15 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
       _endDate = args.value.endDate;
       _updateDateTextInput();
 
+      if (mounted) {
+        setState(() {
+          _dateRangeTypeSelected = null;
+        });
+      }
+    }
+    else{
+       _startDate = args.value;
+      _updateDateTextInput();
       if (mounted) {
         setState(() {
           _dateRangeTypeSelected = null;

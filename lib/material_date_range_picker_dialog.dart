@@ -47,6 +47,7 @@ class MaterialDateRangePickerDialog {
             child: PointerInterceptor(child: Padding(
               padding: MediaQuery.of(context).viewInsets,
               child: MultipleViewDateRangePicker(
+                fromSingle: true,
                 confirmText: confirmText,
                 cancelText: cancelText,
                 startDateTitle: startDateTitle,
