@@ -38,6 +38,7 @@ class MultipleViewDateRangePicker extends StatefulWidget {
   final double? radius;
   final double? tabletInputFieldMaxWidth;
   final bool autoClose;
+  final bool? fromSingle;
 
   const MultipleViewDateRangePicker({
     Key? key,
@@ -58,6 +59,7 @@ class MultipleViewDateRangePicker extends StatefulWidget {
     this.endDateInputController,
     this.customDateRangeButtons,
     this.radius,
+    this.fromSingle,
     this.tabletInputFieldMaxWidth,
     this.autoClose = true
   }) : super(key: key);
@@ -176,7 +178,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
                   controller: _datePickerController,
                   onSelectionChanged: _onSelectionChanged,
                   view: DateRangePickerView.month,
-                  selectionMode: DateRangePickerSelectionMode.range,
+                  selectionMode:widget.fromSingle==true?DateRangePickerSelectionMode.single: DateRangePickerSelectionMode.range,
                   initialDisplayDate: _startDate,
                   initialSelectedRange: PickerDateRange(_startDate, _endDate),
                   enableMultiView: true,
@@ -269,7 +271,9 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
             children: [
               _buildTopView(context,onClose),
               _buildDateInputFormMobile(context, DateType.start),
-              _buildDateInputFormMobile(context, DateType.end),
+              Visibility(
+                visible: widget.fromSingle==false||widget.fromSingle==null,
+                child: _buildDateInputFormMobile(context, DateType.end)),
               _buildBottomViewMobile(context,onClose)
             ]
           ),
