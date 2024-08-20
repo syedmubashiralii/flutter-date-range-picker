@@ -238,7 +238,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
 
   Widget _buildViewMobile(BuildContext context,VoidCallback onClose) {
     return Container(
-      width: double.infinity,
+      width: MediaQuery.sizeOf(context).width*.1-20,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
