@@ -165,7 +165,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
             padding: const EdgeInsets.all(8),
-            child: _buildTopView(context)
+            child: _buildTopView(context,onClose)
           ),
           const Divider(color: ColorsUtils.colorDivider, height: 1),
           Expanded(
@@ -267,7 +267,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildTopView(context),
+              _buildTopView(context,onClose),
               _buildDateInputFormMobile(context, DateType.start),
               _buildDateInputFormMobile(context, DateType.end),
               _buildBottomViewMobile(context,onClose)
@@ -278,16 +278,36 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
     );
   }
 
-  Widget _buildTopView(BuildContext context) {
+  Widget _buildTopView(BuildContext context,VoidCallback onClose) {
     if (widget.customDateRangeButtons != null) {
-      return SizedBox(
-        height: 52,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.all(8.0),
-          shrinkWrap: true,
-          children: widget.customDateRangeButtons!,
-        ),
+      return Row(
+        children: [
+          Expanded(
+            child: SizedBox(
+              height: 52,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.all(8.0),
+                shrinkWrap: true,
+                children: widget.customDateRangeButtons!,
+              ),
+            ),
+          ),
+          Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: onClose??  Navigator.maybeOf(context)?.maybePop,
+                    customBorder: const CircleBorder(),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: SvgPicture.asset(
+                        ImagePaths.icClose,
+                        package: ImagePaths.packageName
+                      ),
+                    ),
+                  ),
+                )
+        ],
       );
     } else {
       return SizedBox(
