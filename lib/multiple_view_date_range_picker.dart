@@ -556,7 +556,9 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
             package: ImagePaths.packageName,
           ),
         ),
-        _buildDateInputFormTablet(context, DateType.end),
+        Visibility(
+          visible: widget.fromSingle==false||widget.fromSingle==null,
+          child: _buildDateInputFormTablet(context, DateType.end),)
         if (!_bottomViewTabletConfirmationButtonsOverflow)
           const SizedBox(width: 12),
       ],
