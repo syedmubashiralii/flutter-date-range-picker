@@ -32,10 +32,10 @@ class SingleViewDatePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pickerView = Container(
-      height: ResponsiveUtils.isMobile(context) ? 450 : 500,
+      height: ResponsiveUtils.isMobile(context) ? 350 : 400,
       width: ResponsiveUtils.isMobile(context)
         ? double.infinity
-        : ResponsiveUtils.isDesktop(context) ? 650 : 500,
+        : ResponsiveUtils.isDesktop(context) ? 550 : 400,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: ResponsiveUtils.isMobile(context)

@@ -142,8 +142,8 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
   Widget _buildViewTablet(BuildContext context,VoidCallback onClose ) {
     return Center(
       child: Container(
-        height: 500 ,
-        width: ResponsiveUtils.isDesktop(context) ? _desktopDateRangePickerWidth : 500,
+        height: 400 ,
+        width: ResponsiveUtils.isDesktop(context) ? _desktopDateRangePickerWidth : 400,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(widget.radius ?? 16)),
