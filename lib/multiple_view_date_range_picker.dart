@@ -149,20 +149,20 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(widget.radius ?? 16)),
-          boxShadow: const [
-            BoxShadow(
-              color: ColorsUtils.colorShadow,
-              spreadRadius: 24,
-              blurRadius: 24,
-              offset: Offset.zero
-            ),
-            BoxShadow(
-              color: ColorsUtils.colorShadowBottom,
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: Offset.zero
-            )
-          ]
+          // boxShadow: const [
+          //   BoxShadow(
+          //     color: ColorsUtils.colorShadow,
+          //     spreadRadius: 24,
+          //     blurRadius: 24,
+          //     offset: Offset.zero
+          //   ),
+          //   BoxShadow(
+          //     color: ColorsUtils.colorShadowBottom,
+          //     spreadRadius: 2,
+          //     blurRadius: 2,
+          //     offset: Offset.zero
+          //   )
+          // ]
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
@@ -246,20 +246,20 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
           topRight: Radius.circular(widget.radius ?? 16),
         ),
         color: Colors.white,
-        boxShadow: const [
-          BoxShadow(
-            color: ColorsUtils.colorShadow,
-            spreadRadius: 24,
-            blurRadius: 24,
-            offset: Offset.zero
-          ),
-          BoxShadow(
-            color: ColorsUtils.colorShadowBottom,
-            spreadRadius: 2,
-            blurRadius: 2,
-            offset: Offset.zero
-          )
-        ]
+        // boxShadow: const [
+        //   BoxShadow(
+        //     color: ColorsUtils.colorShadow,
+        //     spreadRadius: 24,
+        //     blurRadius: 24,
+        //     offset: Offset.zero
+        //   ),
+        //   BoxShadow(
+        //     color: ColorsUtils.colorShadowBottom,
+        //     spreadRadius: 2,
+        //     blurRadius: 2,
+        //     offset: Offset.zero
+        //   )
+        // ]
       ),
       child: SingleChildScrollView(
         child: SafeArea(
