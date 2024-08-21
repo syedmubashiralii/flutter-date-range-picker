@@ -39,6 +39,7 @@ class MultipleViewDateRangePicker extends StatefulWidget {
   final double? tabletInputFieldMaxWidth;
   final bool autoClose;
   final bool? fromSingle;
+  final Color? backgroundColor;
 
   const MultipleViewDateRangePicker({
     Key? key,
@@ -52,6 +53,7 @@ class MultipleViewDateRangePicker extends StatefulWidget {
     this.onClose,
     this.lastYearTitle,
     this.startDate,
+    this.backgroundColor,
     this.endDate,
     this.selectDateRangeActionCallback,
     this.datePickerController,
@@ -147,7 +149,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
         height: 400 ,
         width: ResponsiveUtils.isDesktop(context) ? _desktopDateRangePickerWidth : 450,
         decoration: BoxDecoration(
-          color: Colors.white,
+         color:widget.backgroundColor?? Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(widget.radius ?? 16)),
           // boxShadow: const [
           //   BoxShadow(
@@ -245,7 +247,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
           topLeft: Radius.circular(widget.radius ?? 16),
           topRight: Radius.circular(widget.radius ?? 16),
         ),
-        color: Colors.white,
+        color:widget.backgroundColor?? Colors.white,
         // boxShadow: const [
         //   BoxShadow(
         //     color: ColorsUtils.colorShadow,
