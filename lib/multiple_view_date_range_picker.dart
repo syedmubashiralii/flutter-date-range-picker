@@ -184,7 +184,7 @@ class _MultipleViewDateRangePickerState extends State<MultipleViewDateRangePicke
                   initialDisplayDate: _startDate,
                   initialSelectedRange: PickerDateRange(_startDate, _endDate),
                   enableMultiView: true,
-                  enablePastDates: true,
+                  enablePastDates: false,
                   viewSpacing: 16,
                   headerHeight: 48,
                   backgroundColor: Colors.white,
